@@ -1,3 +1,8 @@
-from django.shortcuts import render
+from rest_framework import viewsets
+from electronics_sales_network.models import ChainLink
+from electronics_sales_network.serializers import ChainLinkSerializer
 
-# Create your views here.
+
+class ChainLinkViewSet(viewsets.ModelViewSet):
+    serializer_class = ChainLinkSerializer
+    queryset = ChainLink.objects.all()
