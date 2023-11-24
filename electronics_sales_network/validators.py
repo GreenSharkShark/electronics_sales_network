@@ -17,3 +17,9 @@ class ChainLinkSerializerValidator:
         if self.is_factory:
             if self.supplier or self.debt_to_the_supplier:
                 raise ValidationError('У завода не может быть поставщиков электроники и задолженности перед ними')
+
+        if self.is_factory and self.is_retail_network and self.is_individual_entrepreneur:
+            raise ValidationError('Нельзя выбирать несколько видов занятости одновременно')
+
+        if not (self.is_factory ^ self.is_retail_network ^ self.is_individual_entrepreneur):
+            raise ValidationError('Нельзя выбирать несколько видов занятости одновременно')
