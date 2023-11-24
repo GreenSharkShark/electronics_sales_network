@@ -33,9 +33,9 @@ class ChainLink(models.Model):
     debt_to_the_supplier = models.DecimalField(max_digits=10, decimal_places=2,
                                                verbose_name='задолженность перед поставщиком', **NULLABLE)
     date_of_creation = models.DateTimeField(auto_now_add=True)
-    is_factory = models.BooleanField(default=False)
-    is_retail_network = models.BooleanField(default=False)
-    is_individual_entrepreneur = models.BooleanField(default=False)
+    is_factory = models.BooleanField(default=False, verbose_name='завод')
+    is_retail_network = models.BooleanField(default=False, verbose_name='розничная сеть')
+    is_individual_entrepreneur = models.BooleanField(default=False, verbose_name='индивидуальный предприниматель')
 
     def __str__(self):
         if self.is_factory:
