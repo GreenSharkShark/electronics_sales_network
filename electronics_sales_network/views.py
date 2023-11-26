@@ -3,6 +3,7 @@ from rest_framework.filters import SearchFilter
 from electronics_sales_network.models import ChainLink
 from electronics_sales_network.permissions import IsActiveStaff
 from electronics_sales_network.serializers import ChainLinkSerializer
+from rest_framework.permissions import IsAuthenticated
 
 
 class ChainLinkViewSet(ModelViewSet):
@@ -10,4 +11,4 @@ class ChainLinkViewSet(ModelViewSet):
     queryset = ChainLink.objects.all()
     filter_backends = [SearchFilter]
     search_fields = ['contacts__city']
-    permission_classes = [IsActiveStaff]
+    permission_classes = [IsAuthenticated, IsActiveStaff]
