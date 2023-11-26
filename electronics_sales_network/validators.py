@@ -1,7 +1,7 @@
 from django.core.exceptions import ValidationError
 
 
-class ChainLinkSerializerValidator:
+class ChainLinkValidator:
 
     def __init__(self, data: dict):
         self.is_factory = data.get('is_factory')

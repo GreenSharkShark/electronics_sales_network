@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from electronics_sales_network.models import ChainLink
-from electronics_sales_network.validators import ChainLinkSerializerValidator
+from electronics_sales_network.validators import ChainLinkValidator
 
 
 class ChainLinkSerializer(serializers.ModelSerializer):
@@ -10,7 +10,7 @@ class ChainLinkSerializer(serializers.ModelSerializer):
         read_only_fields = ['debt_to_the_supplier']
 
     def validate(self, data):
-        validator = ChainLinkSerializerValidator(data)
+        validator = ChainLinkValidator(data)
         validator()
 
         return data

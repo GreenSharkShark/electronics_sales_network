@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.urls import reverse
 from django.utils.html import format_html
 from electronics_sales_network.models import ChainLink
-from electronics_sales_network.validators import ChainLinkSerializerValidator
+from electronics_sales_network.validators import ChainLinkValidator
 
 
 class ChainLinkAdmin(admin.ModelAdmin):
@@ -40,7 +40,7 @@ class ChainLinkAdmin(admin.ModelAdmin):
         """
         Вызов валидатора перед сохранением модели через админ панель
         """
-        validator = ChainLinkSerializerValidator({
+        validator = ChainLinkValidator({
             'is_factory': form.cleaned_data['is_factory'],
             'is_retail_network': form.cleaned_data['is_retail_network'],
             'is_individual_entrepreneur': form.cleaned_data['is_individual_entrepreneur'],
